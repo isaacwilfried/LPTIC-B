@@ -24,6 +24,9 @@ QUALITY = 72
 # Les photos DSC_* portent une date incrustée en bas à droite : on retire 11 % en bas.
 STAMP = (0, 0, 1, 0.89)
 PHOTOS = {
+    # Affiches officielles : jamais recadrées (texte jusqu'aux bords)
+    "affiche-lptic-b-2026": ("Affiche inscriptions LPTIC-B 2026-2027.jpg", None),
+    "affiche-lpk-2026": ("Affiche inscriptions LPK 2026-2027.jpg", None),
     "atelier-percage": ("DSC_0081.JPG", STAMP),
     "tableau-electrique": ("DSC_0054.JPG", STAMP),
     "dessin-atelier": ("DSC_0044.JPG", STAMP),

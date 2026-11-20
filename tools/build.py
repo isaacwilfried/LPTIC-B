@@ -30,7 +30,7 @@ ETABS = json.loads((CONTENT / "etablissements.json").read_text(encoding="utf-8")
 ETAB = {e["slug"]: e for e in ETABS}
 FORM = json.loads((CONTENT / "formations.json").read_text(encoding="utf-8"))
 GROUPS = {g["id"]: g for g in FORM["groups"]}
-ITEMS = FORM["items"]
+ITEMS = [it for it in FORM["items"] if not it.get("masque")]  # "masque": true retire une filière non ouverte
 GALERIE = json.loads((CONTENT / "galerie.json").read_text(encoding="utf-8"))
 PARTNERS = json.loads((CONTENT / "partenaires.json").read_text(encoding="utf-8"))
 PHOTOS = json.loads((ASSETS / "photos" / "manifest.json").read_text(encoding="utf-8"))
@@ -81,6 +81,11 @@ def wa_url(message: str | None = None) -> str:
     return f"https://wa.me/{num}?text={urllib.parse.quote(msg)}"
 
 
+def mo(path: Path) -> str:
+    """Taille d'un fichier en mégaoctets, à la française : les parents savent ce que la vidéo va consommer."""
+    return f"{path.stat().st_size / 1_000_000:.1f} Mo".replace(".", ",")
+
+
 def fr_date(d: str) -> str:
     y, m, day = d.split("-")
     return f"{int(day)} {MONTHS[int(m) - 1]} {y}"
@@ -107,6 +112,20 @@ def logo(page: str, slug: str, cls: str = "logo", height: int = 64) -> str:
             f'height="{height}" alt="Logo {e(et["short"])}">')
 
 
+def street_full() -> str:
+    a = SITE["address"]
+    return a["street"] + (", " + a["landmark"] if a.get("landmark") else "")
+
+
+def wa_numbers() -> str:
+    """Les numéros WhatsApp du secrétariat, chacun cliquable."""
+    out = []
+    for n in [SITE["whatsapp"]] + SITE.get("whatsapp_autres", []):
+        num = re.sub(r"\D", "", n)
+        out.append(f'<a href="https://wa.me/{num}?text={urllib.parse.quote(SITE["whatsapp_message"])}">{e(n.replace("+226 ", ""))}</a>')
+    return " ou ".join(out)
+
+
 def phones(nums: list[str]) -> str:
     return "<br>".join(f'<a href="{tel(n)}">{e(n)}</a>' for n in nums)
 
@@ -122,7 +141,7 @@ def org_schema(et: dict) -> dict:
         "telephone": et["phones"][0],
         "email": SITE["email"],
         "slogan": SITE["motto"],
-        "address": {"@type": "PostalAddress", "streetAddress": a["street"], "addressLocality": a["locality"],
+        "address": {"@type": "PostalAddress", "streetAddress": street_full(), "addressLocality": a["locality"],
                     "addressRegion": a["region"], "addressCountry": a["country"], "postOfficeBoxNumber": a["po_box"]},
     }
 
@@ -230,7 +249,7 @@ def page_html(page: str, title: str, desc: str, body: str, schema: list[dict] | 
     <div class="f-grid">
       <div class="f-intro">
         <p class="f-motto">{e(SITE['motto'])}</p>
-        <p>{e(a['street'])}, {e(a['locality'])}<br>{e(a['po_box'])}<br>Burkina Faso</p>
+        <p>{e(a['street'])}<br>{e(a.get('landmark', ''))}<br>{e(a['locality'])}, Burkina Faso<br>{e(a['po_box'])}</p>
         <p><a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a></p>
       </div>
       {foot_etabs}
@@ -297,6 +316,7 @@ def parse_article(path: Path) -> dict:
         k, v = line.split(":", 1)
         meta[k.strip()] = v.strip()
     meta["photos"] = [s.strip() for s in meta.get("photos", "").split(",") if s.strip()]
+    meta["affiches"] = [s.strip() for s in meta.get("affiches", "").split(",") if s.strip()]
     meta.setdefault("categorie", "etablissement")
     assert meta["categorie"] in CATS, f"catégorie inconnue dans {path.name}"
     meta["slug"] = path.stem[11:]
@@ -312,7 +332,11 @@ def md(text: str) -> str:
     blocks = []
     for b in re.split(r"\n\s*\n", text):
         lines = b.strip().splitlines()
-        if all(l.startswith("- ") for l in lines):
+        if not lines:
+            continue
+        if len(lines) == 1 and lines[0].startswith("## "):
+            blocks.append(f"<h2>{inline(lines[0][3:])}</h2>")
+        elif all(l.startswith("- ") for l in lines):
             blocks.append("<ul>" + "".join(f"<li>{inline(l[2:])}</li>" for l in lines) + "</ul>")
         else:
             blocks.append(f"<p>{inline(' '.join(lines))}</p>")
@@ -320,13 +344,16 @@ def md(text: str) -> str:
 
 
 ARTICLES = sorted((parse_article(p) for p in (CONTENT / "actualites").glob("*.md")),
-                  key=lambda a: a["date"], reverse=True)
+                  key=lambda a: (a["date"], a.get("a_la_une") == "oui"), reverse=True)
 
 
 def news_list(page: str, articles: list[dict]) -> str:
     rows = []
     for a in articles:
-        img = photo(page, a["photos"][0] if a["photos"] else None, "", "(min-width: 760px) 240px, 100vw", "news-img")
+        if a["photos"]:
+            img = photo(page, a["photos"][0], "", "(min-width: 760px) 240px, 100vw", "news-img")
+        else:
+            img = photo(page, a["affiches"][0] if a["affiches"] else None, "", "(min-width: 760px) 240px, 100vw", "news-img is-poster")
         rows.append(f"""<li class="news-item">
   <a class="news-link{'' if img else ' no-img'}" href="{link(page, 'actualites/' + a['slug'] + '/')}">
     {img}
@@ -372,7 +399,10 @@ def featured(page: str) -> str:
     url = link(page, "actualites/" + a["slug"] + "/")
     ph = a["photos"][:4]
     media = ""
-    if ph:
+    if a["affiches"]:
+        posters = "".join(photo(page, s, f"Affiche : {a['title']}", "(min-width: 900px) 20vw, 50vw", "feat-poster") for s in a["affiches"][:2])
+        media = f'<a class="feat-media feat-posters" href="{url}" tabindex="-1">{posters}</a>'
+    elif ph:
         thumbs = "".join(photo(page, s, CAPTION.get(s, ""), "(min-width: 900px) 12vw, 30vw", "feat-thumb") for s in ph[1:])
         media = (f'<a class="feat-media" href="{url}" tabindex="-1">{photo(page, ph[0], CAPTION.get(ph[0], ""), "(min-width: 900px) 40vw, 100vw", "feat-main")}'
                  + (f'<span class="feat-thumbs">{thumbs}</span>' if thumbs else "") + "</a>")
@@ -527,7 +557,8 @@ def build_formation(it: dict) -> None:
     access = "".join(f"<li>{e(x)}</li>" for x in g["access"])
     others = "".join(formation_link(page, o) for o in ITEMS if o["group"] == it["group"] and o["slug"] != it["slug"])
     img = photo(page, it.get("photo"), "", "(min-width: 900px) 40vw, 100vw", "side-img")
-    jobs_title = "Débouchés et poursuite d'études" if it["group"] != "pro" else "Exemples de métiers"
+    jobs_title = it.get("jobs_title") or ("Exemples de métiers" if it["group"] in ("pro", "apprentissage") else "Débouchés et poursuite d'études")
+    nxt = it.get("next", g["next"])
     title = it["title"] + (f" ({it['abbr']})" if it.get("abbr") and it["group"] == "pro" else "")
     body = f"""<div class="wrap page-head key-{et['key']}">{crumbs(page, trail)}
 <p class="kicker"><a href="{link(page, 'etablissements/' + et['slug'] + '/')}">{e(et['short'])}</a>, {e(it['family'].lower())}</p>
@@ -536,9 +567,9 @@ def build_formation(it: dict) -> None:
   <div class="prose">
     <h2 class="h-small">Ce que vous apprenez</h2><ul class="ticks">{learn}</ul>
     <h2 class="h-small">Diplômes et accès</h2><p>{e(g['diplomas'])}.</p><ul>{access}</ul>
-    <h2 class="h-small">{jobs_title}</h2><ul>{jobs}</ul><p>{e(g['next'])}</p>
+    <h2 class="h-small">{jobs_title}</h2><ul>{jobs}</ul>{f"<p>{e(nxt)}</p>" if nxt else ""}
   </div>
-  <aside class="side">{img}<div class="contact-box"><p class="cb-title">S'inscrire en {e(it.get('abbr') or it['title'].lower())}</p>
+  <aside class="side">{img}<div class="contact-box"><p class="cb-title">{e(it.get('cta') or "S'inscrire en " + (it.get('abbr') or it['title'].lower()))}</p>
   <p><a class="btn btn-sun btn-block" href="{wa_url('Bonjour, je souhaite des informations sur la formation ' + it['title'] + '.')}">Écrire sur WhatsApp</a></p>
   <p>{phones(et['phones'])}</p></div></aside>
 </div></section>
@@ -550,15 +581,27 @@ def build_formation(it: dict) -> None:
                           body, schema, og_image=f"assets/og/{it['photo']}.jpg" if it.get("photo") else "assets/og.jpg", active="formations/"))
 
 
+def pieces_block() -> str:
+    ins = SITE.get("inscription")
+    if not ins:
+        return ""
+    lis = "".join(f"<li>{e(x)}</li>" for x in ins["pieces"])
+    return f"""<section class="sec sec-tint"><div class="wrap">
+<h2>Pièces à fournir pour l'inscription en {e(ins['annee'])}</h2>
+<div class="prose"><ul class="ticks">{lis}</ul><p class="note">{e(ins['pieces_note'])}</p></div>
+</div></section>"""
+
+
 def build_admission() -> None:
     page = "admission/"
     trail = [("Accueil", ""), ("Admission", page)]
     rows = "".join(f"""<div class="adm key-{ETAB[g['etablissement']]['key']}"><h2 class="h-small">{e(g['title'])} <span class="nw">({e(ETAB[g['etablissement']]['short'])})</span></h2>
 <p>{e(g['diplomas'])}.</p><ul>{''.join(f'<li>{e(a)}</li>' for a in g['access'])}</ul></div>""" for g in FORM["groups"])
     body = f"""<div class="wrap page-head">{crumbs(page, trail)}<h1>Admission</h1>
-<p class="lead">Les inscriptions se font auprès du secrétariat. Contactez-le pour connaître les places disponibles, les pièces à fournir et les frais de scolarité de l'année.</p></div>
+<p class="lead">Les inscriptions pour l'année {e(SITE['inscription']['annee'])} sont ouvertes. Elles se font auprès du secrétariat : contactez-le pour connaître les places disponibles et les frais de scolarité.</p></div>
 <section class="sec sec-tight"><div class="wrap"><h2>Conditions d'accès</h2><div class="adms">{rows}</div>
 </div></section>
+{pieces_block()}
 {cta_band(page, "Prêt à vous inscrire ?")}"""
     write(page, page_html(page, "Admission et inscriptions", "Conditions d'accès et inscriptions au LPTIC-B, au LPK et au CAFOT à Bobo-Dioulasso : BEP, bac professionnel, bacs technologiques, séries A4 et D.",
                           body, [breadcrumb(trail)], active=page))
@@ -618,18 +661,31 @@ def build_article(a: dict) -> None:
             imgs += '<div class="art-grid">' + "".join(
                 f'<figure>{photo(ap, s, CAPTION.get(s, ""), "(min-width: 760px) 240px, 50vw")}'
                 f'{"<figcaption>" + e(CAPTION[s]) + "</figcaption>" if s in CAPTION else ""}</figure>' for s in ph[1:]) + "</div>"
+    if a["affiches"]:
+        figs = "".join(
+            f'<figure><a href="{link(ap, "assets/photos/" + s + "-" + str(PHOTOS[s]["widths"][-1]) + ".webp")}">'
+            f'{photo(ap, s, "Affiche des inscriptions " + ("du LPK" if "lpk" in s else "du LPTIC-B"), "(min-width: 760px) 360px, 50vw", "poster")}</a>'
+            f'<figcaption>Agrandir l\'affiche {"du LPK" if "lpk" in s else "du LPTIC-B"}</figcaption></figure>' for s in a["affiches"] if s in PHOTOS)
+        imgs = f'<div class="posters">{figs}</div>' + imgs
+    vid = ""
+    if a.get("video"):
+        v = a["video"]
+        vid = (f'<figure class="video"><video controls preload="none" playsinline width="540" height="720" '
+                 f'poster="{link(ap, "assets/video/" + v + "-poster.webp")}">'
+                 f'<source src="{link(ap, "assets/video/" + v + ".mp4")}" type="video/mp4"></video>'
+                 f'<figcaption>{e(a.get("video_titre", ""))} ({e(a.get("video_duree", ""))}{", " if a.get("video_duree") else ""}{mo(ASSETS / "video" / (v + ".mp4"))}). Son contenu est repris dans le texte ci-dessus.</figcaption></figure>')
     source = ""
     if a.get("source"):
         source = f'<p class="source">Source : <a href="{e(a["source"])}">{e(a.get("source_nom", a["source"]))}</a></p>'
     abody = f"""<article class="wrap article">{crumbs(ap, t2)}
 <p class="news-meta"><a class="tag tag-{a['categorie']}" href="{link(ap, cat_page)}">{e(cat_name)}</a><time datetime="{a['date']}">{fr_date(a['date'])}</time></p>
 <h1>{e(a['title'])}</h1>
-{imgs}<div class="prose">{md(a['body'])}{source}</div></article>
+{imgs}<div class="prose">{md(a['body'])}{source}</div>{vid}</article>
 {cta_band(ap)}"""
     schema = [breadcrumb(t2), {"@type": "NewsArticle", "headline": a["title"], "datePublished": a["date"], "inLanguage": "fr",
-                               "image": [f'{SITE["url"]}/assets/og/{s}.jpg' for s in ph[:1]],
+                               "image": [f'{SITE["url"]}/assets/og/{s}.jpg' for s in ([a["og"]] if a.get("og") else ph[:1])],
                                "publisher": {"@type": "HighSchool", "name": ETAB["lptic-b"]["name"]}}]
-    og = f"assets/og/{ph[0]}.jpg" if ph else "assets/og.jpg"
+    og = f"assets/og/{a['og']}.jpg" if a.get("og") else (f"assets/og/{ph[0]}.jpg" if ph else "assets/og.jpg")
     write(ap, page_html(ap, a["title"], a["summary"], abody, schema, og_image=og, active="actualites/"))
 
 
@@ -657,8 +713,8 @@ def build_contact() -> None:
 <p class="actions"><a class="btn btn-sun" href="{wa_url()}">Écrire sur WhatsApp</a><a class="btn btn-line" href="mailto:{e(SITE['email'])}">Envoyer un e-mail</a></p></div>
 <section class="sec sec-tight"><div class="wrap">
 <div class="contacts">{boxes}</div>
-<div class="address"><h2 class="h-small">Adresse</h2><p>{e(a['street'])}, {e(a['locality'])}, Burkina Faso<br>Courrier : {e(a['po_box'])}</p>
-<p>E-mail : <a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a></p></div>
+<div class="address"><h2 class="h-small">Adresse</h2><p>{e(a['street'])}, {e(a.get('landmark', ''))}<br>{e(a['locality'])}, Burkina Faso<br>Courrier : {e(a['po_box'])}</p>
+<p>WhatsApp : {wa_numbers()}<br>E-mail : <a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a></p></div>
 </div></section>"""
     write(page, page_html(page, "Contact", "Téléphones, WhatsApp, e-mail et adresse du LPTIC-B, du LPK et du CAFOT, secteur 24, Bobo-Dioulasso.",
                           body, [breadcrumb(trail)] + [org_schema(et) for et in ETABS], active=page))
@@ -686,7 +742,7 @@ def build_mentions() -> None:
     trail = [("Accueil", ""), ("Mentions légales", page)]
     body = f"""<div class="wrap page-head">{crumbs(page, trail)}<h1>Mentions légales</h1></div>
 <section class="sec sec-tight"><div class="wrap prose">
-<h2 class="h-small">Éditeur</h2><p>{e(ETAB['lptic-b']['name'])} (LPTIC-B), {e(SITE['address']['street'])}, {e(SITE['address']['locality'])}, Burkina Faso. Courrier : {e(SITE['address']['po_box'])}. E-mail : <a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a>.</p>
+<h2 class="h-small">Éditeur</h2><p>{e(ETAB['lptic-b']['name'])} (LPTIC-B), {e(street_full())}, {e(SITE['address']['locality'])}, Burkina Faso. Courrier : {e(SITE['address']['po_box'])}. E-mail : <a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a>.</p>
 <h2 class="h-small">Directeur de la publication</h2><p>{e(SITE['publication_director'])}.</p>
 <h2 class="h-small">Hébergement</h2><p>{e(SITE['host'])}.</p>
 <h2 class="h-small">Données personnelles</h2><p>Ce site ne collecte aucune donnée personnelle et n'utilise aucun cookie. Les boutons WhatsApp ouvrent l'application WhatsApp, dont la politique de confidentialité s'applique à vos échanges.</p>

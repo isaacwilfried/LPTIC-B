@@ -15,8 +15,6 @@ Site statique, construit par un script Python sans dépendance et publié sur Gi
 
 Ne jamais modifier le HTML produit : tout passe par `content/` puis `tools/build.py`.
 
-L'ancienne version (Vite + React, mars 2025) est conservée dans la branche `archive/version-react-2025`. Suivi du projet : `docs/SUIVI.md`.
-
 ## Publier une actualité
 
 1. Ajouter les photos : déclarer chaque photo dans `PHOTOS` de `tools/images.py`, puis `python tools/images.py "<dossier des originaux>"`.
@@ -28,11 +26,29 @@ title: Titre de l'actualité
 date: 2026-11-20
 summary: Une ou deux phrases affichées dans la liste.
 photos: slug-photo-1, slug-photo-2
+categorie: etablissement        (ou examens, officiel)
+a_la_une: oui                   (facultatif : mise en avant sur l'accueil)
+affiches: slug-affiche-1, slug-affiche-2   (facultatif : affiches jamais recadrées)
+video: nom-video                (facultatif : assets/video/nom-video.mp4 et nom-video-poster.webp)
+video_titre: Titre de la vidéo
+video_duree: 1 min 7 s
+og: nom-image                   (facultatif : assets/og/nom-image.jpg, 1200 x 630, pour WhatsApp et Facebook)
+source: https://...             (obligatoire pour une info officielle)
+source_nom: Nom de la source
 ---
 Texte de l'article. Paragraphes séparés par une ligne vide. **Gras** et [liens](https://exemple.com) acceptés.
 ```
 
+Dans le texte, `## Titre` crée un intertitre et les lignes commençant par `- ` une liste.
+
 3. `python tools/build.py`, vérifier, puis pousser sur `main`.
+
+Vidéo : ré-encoder avant de l'ajouter, par exemple
+`ffmpeg -i source.mp4 -vf scale=540:-2 -c:v libx264 -preset veryfast -crf 27 -movflags +faststart -c:a aac -b:a 64k -ac 1 assets/video/nom-video.mp4`.
+
+## Masquer une filière
+
+Ajouter `"masque": true` à la filière dans `content/formations.json` : sa page disparaît du site sans perdre le texte.
 
 ## Ajouter un partenaire
 

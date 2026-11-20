@@ -8,7 +8,7 @@
     "logo": "lptic-b",
     "schema_type": "HighSchool",
     "photo": "atelier-percage",
-    "summary": "BEP, baccalauréats professionnels et baccalauréats technologiques, en filières industrielles et commerciales.",
+    "summary": "BEP, baccalauréats professionnels et baccalauréats technologiques, en filières industrielles et tertiaires.",
     "body": [
       "Le Lycée Privé Technique Industriel et Commercial de Bobo-Dioulasso (LPTIC-B) est un lycée privé laïc. Il a ouvert ses portes à la rentrée 2012-2013, par autorisation n° 2013-001290/MESS/SG/DGESTP du 12 juin 2013, dans les filières du génie électrique, de la comptabilité et du secrétariat.",
       "Par autorisation n° 2021-02436/MENAPLN/SG/DEP du 18 octobre 2021, il a été autorisé à ouvrir les filières du génie civil, du génie mécanique et de l'agroalimentaire.",
@@ -19,7 +19,7 @@
     "phones": [
       "+226 20 97 25 35",
       "+226 76 61 17 46",
-      "+226 70 39 46 16"
+      "+226 70 01 02 42"
     ],
     "audio": [
       {
@@ -41,13 +41,16 @@
     "logo": "lpk",
     "schema_type": "HighSchool",
     "photo": "eleves-en-classe",
-    "summary": "Le lycée d'enseignement général du même promoteur prépare au baccalauréat dans les séries A4 et D.",
+    "summary": "Le collège et le lycée d'enseignement général du même promoteur : de la 6e à la 3e, puis de la seconde à la terminale, séries A4 et D.",
     "body": [
-      "Le Lycée Privé Kenntnis (LPK) est l'établissement d'enseignement général du même promoteur que le LPTIC-B. Il prépare au baccalauréat dans les séries A4 et D.",
+      "Le Lycée Privé Kenntnis (LPK) est l'établissement d'enseignement général du même promoteur que le LPTIC-B. Il accueille les élèves du post-primaire, de la sixième à la troisième, puis du secondaire, de la seconde à la terminale, dans les séries A4 et D.",
+      "On y entre en sixième avec le CEPE et en seconde avec le BEPC.",
       "Kenntnis signifie « connaissance » en allemand. Le lycée partage avec le LPTIC-B la même devise : excellence, discipline, succès."
     ],
     "phones": [
-      "+226 76 61 17 46"
+      "+226 20 97 25 35",
+      "+226 76 61 17 46",
+      "+226 70 01 02 42"
     ]
   },
   {
@@ -59,10 +62,11 @@
     "logo": "cafot",
     "schema_type": "EducationalOrganization",
     "photo": "apprenti-etabli",
-    "summary": "Un centre de formation technique et professionnelle au service du développement communautaire.",
+    "summary": "Un centre de formation technique et professionnelle par l'apprentissage, avec un atelier de mécanique automobile, au service du développement communautaire.",
     "body": [
       "Le Centre d'Apprentissage et de Formation Technique (CAFOT) est un établissement du même promoteur, consacré à la formation technique et professionnelle par l'apprentissage.",
-      "Il se présente comme « un centre d'excellence au service du développement communautaire ». Pour connaître les formations ouvertes et les dates d'entrée, contactez le centre."
+      "On y apprend notamment la mécanique automobile : les apprentis se forment à l'entretien et à la réparation des véhicules.",
+      "Le centre se présente comme « un centre d'excellence au service du développement communautaire ». Pour connaître les autres formations ouvertes et les dates d'entrée, contactez le centre."
     ],
     "phones": [
       "+226 20 98 60 38",

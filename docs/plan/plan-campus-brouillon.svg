@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <defs>
+    <pattern id="pv" width="14" height="10" patternUnits="userSpaceOnUse">
+      <rect width="14" height="10" fill="#2c4a7a"/><path d="M0 5H14M7 0V10" stroke="#8fb3e6" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="560" fill="#f6efe3"/>
+  <text x="24" y="34" font-size="20" font-weight="700" fill="#12223f">LPTIC-B, plan du site (brouillon à valider)</text>
+  <text x="24" y="56" font-size="13" fill="#4a5872">Kua, secteur 24, zone artisanale, Bobo-Dioulasso. Dessiné d'après la vue satellite, sans échelle.</text>
+  <!-- clôture -->
+  <rect x="70" y="80" width="620" height="440" fill="#ead9bf" stroke="#8a6a44" stroke-width="3" stroke-dasharray="10 5"/>
+  <!-- cour -->
+  <text x="330" y="300" font-size="13" fill="#8a6a44" text-anchor="middle">Cour</text>
+  <!-- administration (rouge) -->
+  <rect x="220" y="96" width="120" height="80" fill="#d8263b"/>
+  <text x="280" y="132" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Administration</text>
+  <text x="280" y="150" font-size="11" fill="#fff" text-anchor="middle">(repère rouge)</text>
+  <rect x="196" y="96" width="22" height="22" fill="#b7a58a" stroke="#8a6a44"/>
+  <text x="184" y="92" font-size="10" fill="#4a5872" text-anchor="end">petit bâtiment d'angle ?</text>
+  <!-- bâtiment solaire haut -->
+  <rect x="380" y="110" width="200" height="110" fill="url(#pv)" stroke="#12223f"/>
+  <text x="480" y="240" font-size="12" fill="#12223f" text-anchor="middle">Bâtiment à panneaux solaires</text>
+  <!-- salles de TP (violet) -->
+  <rect x="86" y="150" width="100" height="330" fill="#6b3fa0"/>
+  <text x="136" y="310" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" transform="rotate(-90 136 310)">Salles de TP (repère violet)</text>
+  <!-- bloc bas avec panneaux -->
+  <rect x="230" y="330" width="90" height="170" fill="#c9b79b" stroke="#8a6a44"/>
+  <rect x="330" y="360" width="110" height="140" fill="url(#pv)" stroke="#12223f"/>
+  <text x="300" y="516" font-size="12" fill="#12223f" text-anchor="middle">Ateliers ou classes à préciser, toit solaire</text>
+  <!-- bâtiments à droite -->
+  <rect x="470" y="330" width="80" height="170" fill="#c9b79b" stroke="#8a6a44"/>
+  <rect x="580" y="250" width="70" height="250" fill="#c9b79b" stroke="#8a6a44"/>
+  <text x="565" y="320" font-size="12" fill="#12223f" text-anchor="middle">Salles de classe ?</text>
+  <!-- point Google -->
+  <circle cx="330" cy="270" r="9" fill="#ea4335" stroke="#fff" stroke-width="2"/>
+  <text x="345" y="268" font-size="11" fill="#4a5872">repère Google (légèrement décalé)</text>
+  <!-- nord -->
+  <g transform="translate(820 110)"><path d="M0 -30 L12 10 L0 2 L-12 10 Z" fill="#12223f"/><text y="30" font-size="14" font-weight="700" text-anchor="middle" fill="#12223f">N</text></g>
+  <!-- légende -->
+  <g font-size="12" fill="#12223f" transform="translate(720 200)">
+    <rect width="16" height="16" fill="#d8263b"/><text x="24" y="13">Administration</text>
+    <rect y="26" width="16" height="16" fill="#6b3fa0"/><text x="24" y="39">Salles de TP</text>
+    <rect y="52" width="16" height="16" fill="url(#pv)"/><text x="24" y="65">Toit solaire</text>
+    <rect y="78" width="16" height="16" fill="#c9b79b" stroke="#8a6a44"/><text x="24" y="91">À préciser</text>
+    <text y="130" font-size="11" fill="#4a5872">Le CSPS est à environ</text>
+    <text y="146" font-size="11" fill="#4a5872">100 m au nord (affiche :</text>
+    <text y="162" font-size="11" fill="#4a5872">école « au sud du CSPS »)</text>
+  </g>
+</svg>

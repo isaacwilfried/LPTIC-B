@@ -5,18 +5,36 @@
   "short_name": "LPTIC-B",
   "city": "Bobo-Dioulasso",
   "address": {
-    "street": "Secteur 24",
+    "street": "Kua, secteur 24, zone artisanale",
     "locality": "Bobo-Dioulasso",
     "region": "Hauts-Bassins",
     "country": "BF",
-    "po_box": "01 BP 3697 Bobo-Dioulasso 01"
+    "po_box": "01 BP 3697 Bobo-Dioulasso 01",
+    "landmark": "à 100 mètres au sud du CSPS"
   },
   "email": "ssibiri2@yahoo.fr",
   "whatsapp": "+226 76 61 17 46",
   "whatsapp_message": "Bonjour, je souhaite des informations sur les inscriptions.",
   "motto": "Excellence, discipline, succès",
-  "description": "Lycée technique et professionnel (LPTIC-B), lycée d'enseignement général (LPK) et centre de formation technique (CAFOT) à Bobo-Dioulasso, Burkina Faso.",
-  "credit": {"name": "Jovian Labs", "url": "https://jovianlabsstudio.com"},
+  "description": "Lycée technique et professionnel (LPTIC-B), lycée d'enseignement général (LPK) et centre de formation technique (CAFOT) à Kua, secteur 24, Bobo-Dioulasso, Burkina Faso.",
+  "credit": {
+    "name": "Jovian Labs",
+    "url": "https://jovianlabsstudio.com"
+  },
   "publication_director": "Le promoteur des établissements",
-  "host": "GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis"
+  "host": "GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis",
+  "whatsapp_autres": [
+    "+226 70 39 46 16"
+  ],
+  "inscription": {
+    "annee": "2026-2027",
+    "pieces": [
+      "une fiche d'inscription, disponible à l'établissement ;",
+      "une photocopie de l'extrait d'acte de naissance (ou du jugement supplétif) ;",
+      "les bulletins de notes de la dernière classe fréquentée ;",
+      "un quitus de sortie de l'établissement précédent ;",
+      "la photocopie du diplôme ou de l'attestation de réussite : CEPE pour l'entrée en 6e, BEPC pour l'entrée en seconde."
+    ],
+    "pieces_note": "Liste publiée sur l'affiche des inscriptions 2026-2027. Pour une entrée en BEP ou en baccalauréat professionnel, le secrétariat précise le diplôme à joindre."
+  }
 }

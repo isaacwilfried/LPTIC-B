@@ -1,4 +1,18 @@
 {
+ "affiche-lptic-b-2026": {
+  "widths": [
+   480,
+   960
+  ],
+  "ratio": 0.75
+ },
+ "affiche-lpk-2026": {
+  "widths": [
+   480,
+   960
+  ],
+  "ratio": 0.75
+ },
  "atelier-percage": {
   "widths": [
    480,

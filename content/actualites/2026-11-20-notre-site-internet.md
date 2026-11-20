@@ -3,7 +3,7 @@ title: Nos établissements ont leur site internet
 date: 2026-11-20
 summary: Formations, inscriptions, contacts et actualités du LPTIC-B, du LPK et du CAFOT sont désormais réunis sur lpticb.com.
 categorie: etablissement
-a_la_une: oui
+a_la_une: non
 photos: batiments, atelier-percage, chantier-ecole, oscilloscopes
 ---
 Le LPTIC-B, le Lycée Privé Kenntnis et le CAFOT ont désormais un site internet commun.
