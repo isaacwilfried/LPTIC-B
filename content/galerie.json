@@ -1,0 +1,20 @@
+[
+  {"photo": "atelier-percage", "caption": "Travaux pratiques à la perceuse à colonne"},
+  {"photo": "tableau-electrique", "caption": "Câblage d'un tableau électrique"},
+  {"photo": "oscilloscopes", "caption": "Mesures à l'oscilloscope en électronique"},
+  {"photo": "banc-electrotechnique", "caption": "Banc d'essai en électrotechnique"},
+  {"photo": "panneaux-solaires", "caption": "Installation de panneaux solaires"},
+  {"photo": "atelier-neuf", "caption": "Travaux pratiques dans un atelier"},
+  {"photo": "dessin-atelier", "caption": "Dessin technique en atelier"},
+  {"photo": "chantier-ecole", "caption": "Chantier école en génie civil"},
+  {"photo": "parpaings", "caption": "Fabrication de parpaings"},
+  {"photo": "groupe-genie-civil", "caption": "Élèves de génie civil sur le chantier"},
+  {"photo": "metallerie", "caption": "Atelier de construction métallique"},
+  {"photo": "visite-cimasso", "caption": "Visite de la cimenterie Cimasso"},
+  {"photo": "visite-usine", "caption": "Visite d'usine"},
+  {"photo": "salle-informatique", "caption": "Salle informatique"},
+  {"photo": "eleves-devant-les-classes", "caption": "Élèves devant les salles de classe"},
+  {"photo": "ceremonie-tenues-traditionnelles", "caption": "Cérémonie en tenues traditionnelles"},
+  {"photo": "sortie-pedagogique", "caption": "Sortie pédagogique"},
+  {"photo": "batiments", "caption": "Les bâtiments de l'établissement"}
+]

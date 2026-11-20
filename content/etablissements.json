@@ -1,0 +1,73 @@
+[
+  {
+    "slug": "lptic-b",
+    "short": "LPTIC-B",
+    "name": "Lycée Privé Technique Industriel et Commercial de Bobo-Dioulasso",
+    "role": "Enseignement technique et professionnel",
+    "key": "blue",
+    "logo": "lptic-b",
+    "schema_type": "HighSchool",
+    "photo": "atelier-percage",
+    "summary": "BEP, baccalauréats professionnels et baccalauréats technologiques, en filières industrielles et commerciales.",
+    "body": [
+      "Le Lycée Privé Technique Industriel et Commercial de Bobo-Dioulasso (LPTIC-B) est un lycée privé laïc. Il a ouvert ses portes à la rentrée 2012-2013, par autorisation n° 2013-001290/MESS/SG/DGESTP du 12 juin 2013, dans les filières du génie électrique, de la comptabilité et du secrétariat.",
+      "Par autorisation n° 2021-02436/MENAPLN/SG/DEP du 18 octobre 2021, il a été autorisé à ouvrir les filières du génie civil, du génie mécanique et de l'agroalimentaire.",
+      "L'établissement est équipé de panneaux solaires et de batteries pour faire face aux coupures d'électricité : cours et travaux pratiques continuent pendant les délestages.",
+      "L'enseignement professionnel y comporte trois cycles : le cycle court, trois à quatre ans après le CEP, qui conduit au CAP ; le cycle moyen, deux ans après le CAP ou le BEPC, qui conduit au BEP ; le cycle long, deux ans après le BEP, qui conduit au baccalauréat professionnel.",
+      "L'enseignement technologique est un cycle long qui conduit au baccalauréat technologique des séries G et F. On y accède par une seconde AB3 ou une seconde TI après le BEPC."
+    ],
+    "phones": [
+      "+226 20 97 25 35",
+      "+226 76 61 17 46",
+      "+226 70 39 46 16"
+    ],
+    "audio": [
+      {
+        "file": "spot-fr.mp3",
+        "label": "Spot radio en français"
+      },
+      {
+        "file": "spot-dioula.mp3",
+        "label": "Spot radio en dioula"
+      }
+    ]
+  },
+  {
+    "slug": "lpk",
+    "short": "LPK",
+    "name": "Lycée Privé Kenntnis",
+    "role": "Enseignement général",
+    "key": "green",
+    "logo": "lpk",
+    "schema_type": "HighSchool",
+    "photo": "eleves-en-classe",
+    "summary": "Le lycée d'enseignement général du même promoteur prépare au baccalauréat dans les séries A4 et D.",
+    "body": [
+      "Le Lycée Privé Kenntnis (LPK) est l'établissement d'enseignement général du même promoteur que le LPTIC-B. Il prépare au baccalauréat dans les séries A4 et D.",
+      "Kenntnis signifie « connaissance » en allemand. Le lycée partage avec le LPTIC-B la même devise : excellence, discipline, succès."
+    ],
+    "phones": [
+      "+226 76 61 17 46"
+    ]
+  },
+  {
+    "slug": "cafot",
+    "short": "CAFOT",
+    "name": "Centre d'Apprentissage et de Formation Technique",
+    "role": "Apprentissage et formation technique et professionnelle",
+    "key": "red",
+    "logo": "cafot",
+    "schema_type": "EducationalOrganization",
+    "photo": "apprenti-etabli",
+    "summary": "Un centre de formation technique et professionnelle au service du développement communautaire.",
+    "body": [
+      "Le Centre d'Apprentissage et de Formation Technique (CAFOT) est un établissement du même promoteur, consacré à la formation technique et professionnelle par l'apprentissage.",
+      "Il se présente comme « un centre d'excellence au service du développement communautaire ». Pour connaître les formations ouvertes et les dates d'entrée, contactez le centre."
+    ],
+    "phones": [
+      "+226 20 98 60 38",
+      "+226 76 61 17 46",
+      "+226 70 72 05 06"
+    ]
+  }
+]

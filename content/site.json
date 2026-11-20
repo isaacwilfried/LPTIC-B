@@ -1,0 +1,22 @@
+{
+  "url": "https://lpticb.com",
+  "lang": "fr",
+  "site_name": "LPTIC-B, LPK et CAFOT",
+  "short_name": "LPTIC-B",
+  "city": "Bobo-Dioulasso",
+  "address": {
+    "street": "Secteur 24",
+    "locality": "Bobo-Dioulasso",
+    "region": "Hauts-Bassins",
+    "country": "BF",
+    "po_box": "01 BP 3697 Bobo-Dioulasso 01"
+  },
+  "email": "ssibiri2@yahoo.fr",
+  "whatsapp": "+226 76 61 17 46",
+  "whatsapp_message": "Bonjour, je souhaite des informations sur les inscriptions.",
+  "motto": "Excellence, discipline, succès",
+  "description": "Lycée technique et professionnel (LPTIC-B), lycée d'enseignement général (LPK) et centre de formation technique (CAFOT) à Bobo-Dioulasso, Burkina Faso.",
+  "credit": {"name": "Jovian Labs", "url": "https://jovianlabsstudio.com"},
+  "publication_director": "Le promoteur des établissements",
+  "host": "GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis"
+}

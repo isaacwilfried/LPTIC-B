@@ -1,0 +1,328 @@
+{
+  "groups": [
+    {
+      "id": "pro",
+      "etablissement": "lptic-b",
+      "title": "Filières professionnelles",
+      "diplomas": "CAP, BEP puis baccalauréats professionnels",
+      "access": [
+        "CAP : trois à quatre ans de formation, après le CEP.",
+        "BEP : deux ans de formation, après le CAP ou le BEPC.",
+        "Baccalauréat professionnel : deux ans de formation, après le BEP."
+      ],
+      "next": "Après le baccalauréat professionnel : entrée dans la vie active, ou poursuite d'études techniques (BTS, licence professionnelle).",
+      "others_title": "Autres filières professionnelles"
+    },
+    {
+      "id": "techno",
+      "etablissement": "lptic-b",
+      "title": "Baccalauréats technologiques",
+      "diplomas": "De la seconde à la terminale, baccalauréat des séries G et F",
+      "access": [
+        "Seconde AB3 après le BEPC pour la série G2.",
+        "Seconde TI après le BEPC pour les séries F2, F3 et F4."
+      ],
+      "next": "Après le baccalauréat technologique : études supérieures techniques ou de gestion (BTS, licence, écoles et instituts).",
+      "others_title": "Autres baccalauréats technologiques"
+    },
+    {
+      "id": "general",
+      "etablissement": "lpk",
+      "title": "Enseignement général",
+      "diplomas": "De la seconde à la terminale, baccalauréat des séries A4 et D",
+      "access": [
+        "Entrée en seconde après le BEPC."
+      ],
+      "next": "Après le baccalauréat : université, classes préparatoires, écoles et instituts supérieurs.",
+      "others_title": "L'autre série du LPK"
+    },
+    {
+      "id": "apprentissage",
+      "etablissement": "cafot",
+      "title": "Apprentissage",
+      "diplomas": "Apprentissage et formation professionnelle",
+      "access": [
+        "Formation professionnelle par l'apprentissage. Le centre précise les filières ouvertes, les conditions d'entrée et les dates de démarrage."
+      ],
+      "next": "Après l'apprentissage : insertion dans un métier ou poursuite en formation technique.",
+      "others_title": "Autres formations du CAFOT",
+      "empty": "La liste des filières d'apprentissage sera publiée prochainement. Contactez le centre pour les formations ouvertes."
+    }
+  ],
+  "items": [
+    {
+      "slug": "administration-commerciale-et-comptabilite",
+      "group": "pro",
+      "title": "Administration commerciale et comptabilité",
+      "abbr": "ACC",
+      "family": "Filière commerciale",
+      "photo": "salle-informatique",
+      "intro": "Comptabilité, gestion et administration commerciale.",
+      "learn": [
+        "Tenir une comptabilité et préparer les documents de fin de période",
+        "Suivre les achats, les ventes et les stocks",
+        "Rédiger et classer les documents commerciaux",
+        "Utiliser les outils bureautiques de gestion"
+      ],
+      "jobs": [
+        "Aide-comptable",
+        "Agent commercial",
+        "Gestionnaire de stocks",
+        "Employé administratif"
+      ]
+    },
+    {
+      "slug": "communication-administrative-et-secretariat",
+      "group": "pro",
+      "title": "Communication administrative et secrétariat",
+      "abbr": "CAS",
+      "family": "Filière commerciale",
+      "photo": "salle-de-classe",
+      "intro": "Techniques de secrétariat et de communication administrative.",
+      "learn": [
+        "Rédiger courriers, comptes rendus et notes",
+        "Accueillir, orienter et informer le public",
+        "Organiser le classement et l'archivage",
+        "Utiliser le traitement de texte et le tableur"
+      ],
+      "jobs": [
+        "Secrétaire",
+        "Assistant administratif",
+        "Agent d'accueil",
+        "Secrétaire comptable"
+      ]
+    },
+    {
+      "slug": "electromecanique",
+      "group": "pro",
+      "title": "Électromécanique",
+      "family": "Filière industrielle",
+      "photo": "atelier-neuf",
+      "intro": "Installation, conduite et maintenance des équipements qui associent électricité et mécanique.",
+      "learn": [
+        "Lire des schémas électriques et des dessins mécaniques",
+        "Monter et régler moteurs, pompes et transmissions",
+        "Câbler la commande et la protection des machines",
+        "Diagnostiquer une panne électrique ou mécanique"
+      ],
+      "jobs": [
+        "Électromécanicien",
+        "Technicien de maintenance électromécanique",
+        "Agent d'entretien d'équipements industriels"
+      ]
+    },
+    {
+      "slug": "electronique",
+      "group": "pro",
+      "title": "Électronique",
+      "family": "Filière industrielle",
+      "photo": "oscilloscopes",
+      "intro": "Maintenance et conception de systèmes électroniques.",
+      "learn": [
+        "Lire et réaliser des schémas électroniques",
+        "Mesurer avec multimètre et oscilloscope",
+        "Diagnostiquer et réparer une carte ou un appareil",
+        "Monter et tester des circuits"
+      ],
+      "jobs": [
+        "Technicien en électronique",
+        "Réparateur d'équipements électroniques",
+        "Agent de maintenance en télécommunications"
+      ]
+    },
+    {
+      "slug": "electrotechnique",
+      "group": "pro",
+      "title": "Électrotechnique",
+      "family": "Filière industrielle",
+      "photo": "tableau-electrique",
+      "intro": "Électricité, électrotechnique et systèmes automatisés.",
+      "learn": [
+        "Réaliser des installations électriques et des tableaux",
+        "Câbler et mettre en service moteurs et automatismes",
+        "Appliquer les règles de sécurité électrique",
+        "Dépanner une installation"
+      ],
+      "jobs": [
+        "Électricien du bâtiment",
+        "Électricien industriel",
+        "Installateur photovoltaïque",
+        "Technicien de maintenance électrique"
+      ]
+    },
+    {
+      "slug": "genie-civil",
+      "group": "pro",
+      "title": "Génie civil",
+      "family": "Filière industrielle",
+      "photo": "chantier-ecole",
+      "intro": "Construction, travaux publics et génie civil.",
+      "learn": [
+        "Lire et exploiter des plans",
+        "Réaliser maçonnerie, coffrages et béton",
+        "Implanter et organiser un chantier",
+        "Évaluer les quantités de matériaux"
+      ],
+      "jobs": [
+        "Chef de chantier",
+        "Dessinateur en bâtiment",
+        "Technicien des travaux publics",
+        "Maçon qualifié"
+      ]
+    },
+    {
+      "slug": "maintenance-industrielle",
+      "group": "pro",
+      "title": "Maintenance industrielle",
+      "family": "Filière industrielle",
+      "photo": "metallerie",
+      "intro": "Maintenance des systèmes mécaniques et industriels.",
+      "learn": [
+        "Entretenir et réparer les machines",
+        "Ajuster, percer, souder et assembler",
+        "Lire un dessin technique",
+        "Organiser la maintenance préventive"
+      ],
+      "jobs": [
+        "Mécanicien de maintenance",
+        "Technicien de maintenance industrielle",
+        "Soudeur",
+        "Ajusteur"
+      ]
+    },
+    {
+      "slug": "agroalimentaire",
+      "group": "pro",
+      "title": "Agroalimentaire",
+      "family": "Filière industrielle",
+      "photo": null,
+      "intro": "Formation technique dans le domaine de l'agroalimentaire.",
+      "learn": [
+        "Transformer et conserver les produits agricoles",
+        "Appliquer les règles d'hygiène et de sécurité alimentaire",
+        "Contrôler la qualité des matières premières et des produits",
+        "Conduire un poste de production"
+      ],
+      "jobs": [
+        "Agent de production agroalimentaire",
+        "Agent de contrôle qualité",
+        "Transformateur de produits locaux"
+      ]
+    },
+    {
+      "slug": "bac-g2",
+      "group": "techno",
+      "title": "Série G2, techniques quantitatives de gestion",
+      "abbr": "G2",
+      "family": "Baccalauréat technologique",
+      "photo": "salle-informatique",
+      "intro": "Le baccalauréat technologique de la gestion, après une seconde AB3.",
+      "learn": [
+        "Comptabilité générale et analytique",
+        "Mathématiques financières et statistiques",
+        "Économie et organisation des entreprises",
+        "Informatique de gestion"
+      ],
+      "jobs": [
+        "Études de comptabilité, de gestion ou de commerce",
+        "Assistant comptable",
+        "Agent de banque ou d'assurance"
+      ]
+    },
+    {
+      "slug": "bac-f2",
+      "group": "techno",
+      "title": "Série F2, électronique",
+      "abbr": "F2",
+      "family": "Baccalauréat technologique",
+      "photo": "montage-electronique",
+      "intro": "Le baccalauréat technologique de l'électronique, après une seconde TI.",
+      "learn": [
+        "Électronique analogique et numérique",
+        "Mesures et essais en laboratoire",
+        "Mathématiques et sciences physiques appliquées",
+        "Dessin et construction"
+      ],
+      "jobs": [
+        "Études supérieures en électronique, télécommunications ou informatique industrielle",
+        "Technicien en électronique"
+      ]
+    },
+    {
+      "slug": "bac-f3",
+      "group": "techno",
+      "title": "Série F3, électrotechnique",
+      "abbr": "F3",
+      "family": "Baccalauréat technologique",
+      "photo": "cablage",
+      "intro": "Le baccalauréat technologique de l'électrotechnique, après une seconde TI.",
+      "learn": [
+        "Machines électriques et électrotechnique",
+        "Installations et schémas électriques",
+        "Automatismes",
+        "Mathématiques et sciences physiques appliquées"
+      ],
+      "jobs": [
+        "Études supérieures en électrotechnique, énergie ou maintenance",
+        "Technicien en électricité"
+      ]
+    },
+    {
+      "slug": "bac-f4",
+      "group": "techno",
+      "title": "Série F4, génie civil",
+      "abbr": "F4",
+      "family": "Baccalauréat technologique",
+      "photo": "maconnerie",
+      "intro": "Le baccalauréat technologique du génie civil, après une seconde TI.",
+      "learn": [
+        "Construction et résistance des matériaux",
+        "Topographie et métré",
+        "Dessin de bâtiment",
+        "Mathématiques et sciences physiques appliquées"
+      ],
+      "jobs": [
+        "Études supérieures en génie civil, bâtiment ou travaux publics",
+        "Technicien du bâtiment"
+      ]
+    },
+    {
+      "slug": "serie-a4",
+      "group": "general",
+      "title": "Série A4, lettres et langues",
+      "abbr": "A4",
+      "family": "Baccalauréat général",
+      "photo": "salle-de-classe",
+      "intro": "La série littéraire du Lycée Privé Kenntnis.",
+      "learn": [
+        "Français et philosophie",
+        "Langues vivantes",
+        "Histoire et géographie",
+        "Mathématiques"
+      ],
+      "jobs": [
+        "Études de lettres, langues, droit, sciences sociales ou communication",
+        "Concours de la fonction publique"
+      ]
+    },
+    {
+      "slug": "serie-d",
+      "group": "general",
+      "title": "Série D, mathématiques et sciences de la nature",
+      "abbr": "D",
+      "family": "Baccalauréat général",
+      "photo": "eleves-en-classe",
+      "intro": "La série scientifique du Lycée Privé Kenntnis.",
+      "learn": [
+        "Mathématiques",
+        "Sciences physiques et chimie",
+        "Sciences de la vie et de la Terre",
+        "Français, philosophie et langues"
+      ],
+      "jobs": [
+        "Études de médecine, d'agronomie, de sciences ou d'ingénierie",
+        "Concours des écoles de santé et d'agriculture"
+      ]
+    }
+  ]
+}

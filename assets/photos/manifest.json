@@ -1,0 +1,206 @@
+{
+ "atelier-percage": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.6854
+ },
+ "tableau-electrique": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.6854
+ },
+ "dessin-atelier": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.6854
+ },
+ "chantier-ecole": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.6854
+ },
+ "fondations": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.6854
+ },
+ "groupe-genie-civil": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.6854
+ },
+ "atelier-neuf": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.6854
+ },
+ "batiments": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.5153
+ },
+ "montee-des-couleurs": {
+  "widths": [
+   468
+  ],
+  "ratio": 0.4737
+ },
+ "visite-cimasso": {
+  "widths": [
+   480,
+   960
+  ],
+  "ratio": 1.0597
+ },
+ "visite-usine": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "panneaux-solaires": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "oscilloscopes": {
+  "widths": [
+   480,
+   960
+  ],
+  "ratio": 1.3333
+ },
+ "montage-electronique": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "cablage": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "maconnerie": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 2.2222
+ },
+ "parpaings": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 2.2222
+ },
+ "metallerie": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "cadres-metalliques": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "salle-informatique": {
+  "widths": [
+   480
+  ],
+  "ratio": 1.3333
+ },
+ "salle-de-classe": {
+  "widths": [
+   480
+  ],
+  "ratio": 1.3333
+ },
+ "eleves-en-classe": {
+  "widths": [
+   480
+  ],
+  "ratio": 1.3333
+ },
+ "eleves-devant-les-classes": {
+  "widths": [
+   480
+  ],
+  "ratio": 1.3333
+ },
+ "apprenti-etabli": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "ceremonie-tenues-traditionnelles": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "sortie-pedagogique": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 1.3333
+ },
+ "banc-electrotechnique": {
+  "widths": [
+   480,
+   960,
+   1600
+  ],
+  "ratio": 0.75
+ }
+}
