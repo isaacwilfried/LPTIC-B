@@ -259,3 +259,4 @@ a.tag:hover { text-decoration: underline; }
 .video figcaption { font-size: .85rem; margin-top: 6px; color: var(--muted, #4a5a75); }
 .note { font-size: .92rem; color: var(--muted, #4a5a75); }
 .prose h2 { margin-top: 1.4em; }
+.f-label { font-weight: 600; color: var(--sun); }

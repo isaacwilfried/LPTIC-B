@@ -4,9 +4,9 @@ Document complet (décisions, cahier des charges, état de l'art) : « Projet LP
 
 ## Contexte
 
-- Site commun de trois établissements d'un même promoteur à Bobo-Dioulasso (Kua, secteur 24, zone artisanale, à 100 m au sud du CSPS) : LPTIC-B (enseignement technique et professionnel), LPK, Lycée Privé Kenntnis (enseignement général : post-primaire 6e-3e, puis séries A4 et D), CAFOT, Centre d'Apprentissage et de Formation Technique (dont mécanique automobile).
+- Site commun de trois établissements d'un même promoteur à Bobo-Dioulasso. Le LPTIC-B et le LPK partagent le même site (Kua, secteur 24, zone artisanale, à 100 m au sud du CSPS) ; le CAFOT est sur un autre site, adresse à venir. Établissements : LPTIC-B (enseignement technique et professionnel), LPK, Lycée Privé Kenntnis (enseignement général : post-primaire 6e-3e, puis séries A4 et D), CAFOT, Centre d'Apprentissage et de Formation Technique (dont mécanique automobile).
 - Domaine : lpticb.com (GoDaddy, compte d'Isaac, payé jusqu'au 23/10/2027).
-- Pilotage : Isaac. Développement, contenus et publication : Claude, via ce dépôt.
+- Pilotage, développement et publication : Isaac (Jovian Labs), via ce dépôt.
 
 ## Décisions en vigueur
 
@@ -31,7 +31,7 @@ Document complet (décisions, cahier des charges, état de l'art) : « Projet LP
 
 ## En attente du promoteur
 
-- Lien Google Maps précis du lycée (le repère actuel est décalé de quelques mètres) et position du CAFOT.
+- Lien Google Maps précis du lycée (le repère actuel est décalé de quelques mètres) et adresse du CAFOT, qui est sur un autre site.
 - Valider ou corriger le brouillon de plan `docs/plan/plan-campus-brouillon.png` (rôle de chaque bâtiment).
 - Filières du CAFOT en plus de la mécanique automobile (liste, durée, conditions d'entrée).
 - CAS et électromécanique : ouvertes en 2026-2027 ? (absentes de l'affiche). Agroalimentaire et F4 masquées en attendant.
@@ -48,3 +48,4 @@ Document complet (décisions, cahier des charges, état de l'art) : « Projet LP
 | --- | --- |
 | 20/11/2026 | Nouvelle version du site (31 pages) : établissements, formations, admission, actualités, galerie, contact, partenaires, mentions légales. Corrections du promoteur intégrées (accroche, CAFOT, CAP, électromécanique). |
 | 20/11/2026 | Affiches et spot vidéo 2026-2027 : article « Les inscriptions 2026-2027 sont ouvertes » à la une, pièces à fournir sur la page Admission, adresse précise, téléphone 70 01 02 42, second WhatsApp 70 39 46 16, post-primaire du LPK, mécanique automobile au CAFOT, agroalimentaire et F4 masquées. Brouillon de plan du site. |
+| 20/11/2026 | Le CAFOT est sur un autre site que les lycées : son adresse n'est plus confondue avec celle du LPTIC-B et du LPK (pied de page, contact, données Google). Domaine lpticb.com renseigné sur GitHub ; reste la zone DNS chez GoDaddy. |

@@ -141,8 +141,10 @@ def org_schema(et: dict) -> dict:
         "telephone": et["phones"][0],
         "email": SITE["email"],
         "slogan": SITE["motto"],
-        "address": {"@type": "PostalAddress", "streetAddress": street_full(), "addressLocality": a["locality"],
-                    "addressRegion": a["region"], "addressCountry": a["country"], "postOfficeBoxNumber": a["po_box"]},
+        "address": ({"@type": "PostalAddress", "addressLocality": a["locality"], "addressRegion": a["region"],
+                     "addressCountry": a["country"]} if et.get("autre_site") else
+                    {"@type": "PostalAddress", "streetAddress": street_full(), "addressLocality": a["locality"],
+                     "addressRegion": a["region"], "addressCountry": a["country"], "postOfficeBoxNumber": a["po_box"]}),
     }
 
 
@@ -249,7 +251,7 @@ def page_html(page: str, title: str, desc: str, body: str, schema: list[dict] | 
     <div class="f-grid">
       <div class="f-intro">
         <p class="f-motto">{e(SITE['motto'])}</p>
-        <p>{e(a['street'])}<br>{e(a.get('landmark', ''))}<br>{e(a['locality'])}, Burkina Faso<br>{e(a['po_box'])}</p>
+        <p><span class="f-label">LPTIC-B et LPK</span><br>{e(a['street'])}<br>{e(a.get('landmark', ''))}<br>{e(a['locality'])}, Burkina Faso<br>{e(a['po_box'])}</p>
         <p><a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a></p>
       </div>
       {foot_etabs}
@@ -522,7 +524,7 @@ def build_etablissement(et: dict) -> None:
   <div class="prose">{paras}{audio}</div>
   <aside class="side">{photo(page, et['photo'], '', '(min-width: 900px) 40vw, 100vw', 'side-img')}
     <div class="contact-box"><p class="cb-title">Contacter le {e(et['short'])}</p><p>{phones(et['phones'])}</p>
-    <p><a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a></p></div></aside>
+    <p><a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a></p>{f'<p class="note">{e(et["adresse_note"])}</p>' if et.get("adresse_note") else ""}</div></aside>
 </div></section>
 {forms}
 {cta_band(page)}"""
@@ -706,17 +708,17 @@ def build_contact() -> None:
     page = "contact/"
     trail = [("Accueil", ""), ("Contact", page)]
     a = SITE["address"]
-    boxes = "".join(f"""<div class="contact-card key-{et['key']}"><h2 class="h-small">{e(et['short'])}</h2><p class="etab-role">{e(et['name'])}</p><p>{phones(et['phones'])}</p></div>"""
+    boxes = "".join(f"""<div class="contact-card key-{et['key']}"><h2 class="h-small">{e(et['short'])}</h2><p class="etab-role">{e(et['name'])}</p><p>{phones(et['phones'])}</p>{f'<p class="note">{e(et["adresse_note"])}</p>' if et.get("adresse_note") else ""}</div>"""
                     for et in ETABS)
     body = f"""<div class="wrap page-head">{crumbs(page, trail)}<h1>Contact</h1>
 <p class="lead">Le plus rapide : un message WhatsApp au secrétariat.</p>
 <p class="actions"><a class="btn btn-sun" href="{wa_url()}">Écrire sur WhatsApp</a><a class="btn btn-line" href="mailto:{e(SITE['email'])}">Envoyer un e-mail</a></p></div>
 <section class="sec sec-tight"><div class="wrap">
 <div class="contacts">{boxes}</div>
-<div class="address"><h2 class="h-small">Adresse</h2><p>{e(a['street'])}, {e(a.get('landmark', ''))}<br>{e(a['locality'])}, Burkina Faso<br>Courrier : {e(a['po_box'])}</p>
+<div class="address"><h2 class="h-small">Adresse du LPTIC-B et du LPK</h2><p>{e(a['street'])}, {e(a.get('landmark', ''))}<br>{e(a['locality'])}, Burkina Faso<br>Courrier : {e(a['po_box'])}</p>
 <p>WhatsApp : {wa_numbers()}<br>E-mail : <a href="mailto:{e(SITE['email'])}">{e(SITE['email'])}</a></p></div>
 </div></section>"""
-    write(page, page_html(page, "Contact", "Téléphones, WhatsApp, e-mail et adresse du LPTIC-B, du LPK et du CAFOT, secteur 24, Bobo-Dioulasso.",
+    write(page, page_html(page, "Contact", "Téléphones, WhatsApp, e-mail et adresses du LPTIC-B et du LPK (Kua, secteur 24) et du CAFOT, à Bobo-Dioulasso.",
                           body, [breadcrumb(trail)] + [org_schema(et) for et in ETABS], active=page))
 
 
